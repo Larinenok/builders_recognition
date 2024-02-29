@@ -2,9 +2,9 @@ import cv2
 from cvzone.PoseModule import PoseDetector
 
 
-def get_humans() -> list:
+def get_humans(input_image_path: str, output_image_path: str) -> list:
     detector = PoseDetector()
-    original_image = cv2.imread('images/people/2.jpg')
+    original_image = cv2.imread(input_image_path)
     image = original_image.copy()
 
     all_boxes = []
@@ -30,6 +30,6 @@ def get_humans() -> list:
 
         cv2.rectangle(original_image, pos1, pos2, (0, 255, 0))
 
-    cv2.imwrite('images/output/output.jpg', img=original_image)
+    cv2.imwrite(output_image_path, img=original_image)
 
     return all_boxes

@@ -1,0 +1,101 @@
+html {
+    background-color: gray;
+}
+html,
+body{
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   margin: 0;
+}
+
+.header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aqua;
+}
+.content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aqua;
+}
+
+.image_box_container {
+    display: flex;
+}
+
+.image_box {
+    position: relative;
+    margin: 10px;
+    height: 300px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: green;
+}
+
+.image_box:hover .image_hint{
+    opacity: 1;
+}
+
+.image_none {
+    display: block;
+    margin: auto;
+    height: 50%;
+}
+
+.user_image {
+    position: absolute;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+
+    visibility: hidden;
+}
+
+.image_hint {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    margin: 10px;
+
+    opacity: 0;
+
+    transition: all 0.3s;
+}
+
+.button_container {
+    width: 100%;
+
+    background-color: aliceblue;
+}
+
+.find_button {
+    display: block;
+    margin: auto;
+
+    background-color: green;
+}
+
+.none_pointer {
+    pointer-events: none;
+    user-select: none;
+}
