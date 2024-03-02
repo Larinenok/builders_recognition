@@ -5,7 +5,7 @@ from tkinter import filedialog
 from human_detetor import get_humans
 
 
-image_types = (('Изображения', ['*.png', '*.jpg']),)
+image_types = (('Изображения', ['*.png', '*.jpg', '*.jpeg']),)
 input_image_path = 'src/web/images/input_image.png'
 output_image_path = 'src/web/images/output_image.png'
 

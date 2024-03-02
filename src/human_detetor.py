@@ -1,9 +1,16 @@
 import cv2
 from cvzone.PoseModule import PoseDetector
+from builders_recognition import find_builder
 
 
 def get_humans(input_image_path: str, output_image_path: str) -> list:
-    detector = PoseDetector()
+    detector = PoseDetector(staticMode=True,
+                            modelComplexity=1,
+                            smoothLandmarks=True,
+                            enableSegmentation=False,
+                            smoothSegmentation=True,
+                            detectionCon=0.5,
+                            trackCon=0.5)
     original_image = cv2.imread(input_image_path)
     image = original_image.copy()
 
@@ -23,13 +30,25 @@ def get_humans(input_image_path: str, output_image_path: str) -> list:
         pos2 = (bbox[0] + bbox[2] - int(bbox[2] / 10), bbox[1] + bbox[3])
 
         cv2.rectangle(image, pos1, pos2, (0, 0, 0), -1)
+    
+    output_image = original_image.copy()
 
     for bbox in all_boxes:
         pos1 = (bbox[0], bbox[1])
         pos2 = (bbox[0] + bbox[2], bbox[1] + bbox[3])
 
-        cv2.rectangle(original_image, pos1, pos2, (0, 255, 0))
+        image = original_image[pos1[1]:pos2[1], pos1[0]:pos2[0]]
+        print(image.size)
+        if image.size < 10000:
+            continue
 
-    cv2.imwrite(output_image_path, img=original_image)
+        if find_builder(image):
+            cv2.rectangle(output_image, pos1, pos2, (0, 255, 0), 5)
+
+            (w, _), _ = cv2.getTextSize('Builder', cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+            output_image = cv2.rectangle(output_image, (pos1[0], pos1[1] - 40), (pos1[0] + w + 20, pos1[1]), (0, 255, 0), -1)
+            cv2.putText(output_image, 'Builder', (pos1[0], pos1[1] - 10), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+
+    cv2.imwrite(output_image_path, img=output_image)
 
     return all_boxes
