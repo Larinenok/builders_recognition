@@ -1,5 +1,10 @@
+@font-face {
+	font-family: 'JetBrainsMono-Regular'; 
+	src: url(JetBrainsMono-Regular.ttf); 
+}
 html {
-    background-color: gray;
+    background-color: #415a77;
+    font-family: 'JetBrainsMono-Regular';
 }
 html,
 body{
@@ -17,14 +22,27 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    align-content: center;
 
-    background-color: aqua;
+    font-family: 'JetBrainsMono-Regular';
+    color: #e0e1dd;
+    background-color: #1b263b;
 }
+
+.text_center {
+    margin: 10px;
+}
+
 .content {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+
     margin: 0;
     width: 100%;
     height: 100%;
 }
+
 .footer {
     position: fixed;
     width: 100%;
@@ -33,23 +51,27 @@ body{
     justify-content: space-between;
     align-items: center;
 
-    background-color: aqua;
+    background-color: #1b263b;
 }
 
 .image_box_container {
     display: flex;
+    justify-content: center;
+
+    height: 50%;
+    width: 100%;
 }
 
 .image_box {
     position: relative;
     margin: 10px;
-    height: 300px;
+    height: 90%;
     width: 100%;
 
     display: flex;
     justify-content: center;
 
-    background-color: green;
+    background-color: #778da9;
 }
 
 .image_box:hover .image_hint{
@@ -85,14 +107,20 @@ body{
 .button_container {
     width: 100%;
 
-    background-color: aliceblue;
+    background-color: #415a77;
 }
 
 .find_button {
     display: block;
     margin: auto;
+    width: 30%;
+    height: 5ch;
 
-    background-color: green;
+	font-family: 'JetBrainsMono-Regular'; 
+    font-size: 20px;
+
+    color: #e0e1dd;
+    background-color: #1b263b;
 }
 
 .none_pointer {

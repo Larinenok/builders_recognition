@@ -6,7 +6,7 @@ import eel_callbacks
 
 def main():
     eel.init('src/web')
-    eel.start('index.html', size=(960, 720))
+    eel.start('index.html', size=(960, 720), mode='chrome')
     # human_detetor.get_humans()
 
 
